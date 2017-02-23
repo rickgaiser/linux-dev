@@ -8,14 +8,14 @@ source "config/config.cfg"
 #   NOTE1: buildroot compiles its own toolchains (can we change this?)
 #   NOTE2: firmware (iop modules) needs the ps2sdk toolchain
 #
-cd "$TOOLCHAIN_DIR"
+cd "${TOOLCHAIN_DIR}"
 	# Change to another binutils branch?
-#	cd "$BINUTILS_DIR"
+#	cd "${BINUTILS_DIR}"
 #	git checkout ps2-v2.24 || exit -1
 #	cd ..
 
 	# Change to another gcc branch?
-#	cd "$GCC_DIR"
+#	cd "${GCC_DIR}"
 #	git checkout ps2-v4.9.0 || exit -1
 #	cd ..
 
@@ -27,22 +27,22 @@ cd "$TOOLCHAIN_DIR"
 
 	cd build
 		# Remove the next line to rebuild binutils
-#		rm -rf "$BINUTILS_DIR"
-		if [ ! -d "$BINUTILS_DIR" ]; then
-			mkdir "$BINUTILS_DIR" || exit -1
-			cd "$BINUTILS_DIR"
-			../../$BINUTILS_DIR/configure --program-prefix="$TOOLCHAIN_PROGRAMPREFIX" --target=$TOOLCHAIN_TARGET --enable-targets=$TOOLCHAIN_TARGET --enable-shared --enable-plugins || exit -1
+#		rm -rf "${BINUTILS_DIR}"
+		if [ ! -d "${BINUTILS_DIR}" ]; then
+			mkdir "${BINUTILS_DIR}" || exit -1
+			cd "${BINUTILS_DIR}"
+			../../${BINUTILS_DIR}/configure --program-prefix="${TOOLCHAIN_PROGRAMPREFIX}" --target=${TOOLCHAIN_TARGET} --enable-targets=${TOOLCHAIN_TARGET} --enable-shared --enable-plugins || exit -1
 			make -j 5 || exit -1
 			sudo make install || exit -1
 			cd ..
 		fi
 
 		# Remove the next line to rebuild gcc
-#		rm -rf "$GCC_DIR"
-		if [ ! -d "$GCC_DIR" ]; then
-			mkdir "$GCC_DIR" || exit -1
-			cd "$GCC_DIR"
-			../../$GCC_DIR/configure --program-prefix="$TOOLCHAIN_PROGRAMPREFIX" --target=$TOOLCHAIN_TARGET --enable-languages=c --disable-nls --disable-shared --disable-libssp --disable-libmudflap --disable-threads --disable-libgomp --disable-libquadmath --disable-target-libiberty --disable-target-zlib --without-ppl --without-cloog --with-headers=no --disable-libada --disable-libatomic || exit -1
+#		rm -rf "${GCC_DIR}"
+		if [ ! -d "${GCC_DIR}" ]; then
+			mkdir "${GCC_DIR}" || exit -1
+			cd "${GCC_DIR}"
+			../../${GCC_DIR}/configure --program-prefix="${TOOLCHAIN_PROGRAMPREFIX}" --target=${TOOLCHAIN_TARGET} --enable-languages=c --disable-nls --disable-shared --disable-libssp --disable-libmudflap --disable-threads --disable-libgomp --disable-libquadmath --disable-target-libiberty --disable-target-zlib --without-ppl --without-cloog --with-headers=no --disable-libada --disable-libatomic || exit -1
 			make -j 5 || exit -1
 			sudo make install || exit -1
 			cd ..

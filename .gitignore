@@ -1,5 +1,9 @@
 buildroot/
 firmware/
+kernelloader/
 linux/
 toolchain/
+usb-stick/boot-overlay/BOOT/*.ELF
+usb-stick/boot-overlay/BOOT/*.gz
+usb-stick/root-overlay/lib/
 

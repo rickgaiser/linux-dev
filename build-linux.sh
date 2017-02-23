@@ -31,7 +31,7 @@ cd ${LINUX_DIR}
 	rm -f vmlinux.strip.gz || exit -1
 	${CROSS_COMPILE}strip vmlinux.strip || exit -1
 	gzip -9 vmlinux.strip || exit -1
-	cp vmlinux.strip.gz /var/www/html/vmlinux.gz || exit -1
+#	cp vmlinux.strip.gz /var/www/html/vmlinux.gz || exit -1
 	cp vmlinux.strip.gz ../${USB_BOOT_DIR}/BOOT/vmlinux-v${LINUX_VERSION}.gz || exit -1
 	cp .config ../${USB_BOOT_DIR}/BOOT/kernelconfig-v${LINUX_VERSION}.txt || exit -1
 cd ..
