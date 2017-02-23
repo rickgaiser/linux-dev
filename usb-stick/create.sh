@@ -46,7 +46,7 @@ for arg; do
 done
 
 # Zero out the block device (for better compression)
-dd if=/dev/zero of=$DEVICE bs=1M count=$STICK_SIZE_MB
+#dd if=/dev/zero of=$DEVICE bs=1M count=$STICK_SIZE_MB
 
 sleep 1
 
@@ -82,6 +82,11 @@ mkdir tmp
 mount "$DEVICE"3 tmp
 cd tmp
 
+# Make sure there is a /boot directory to mount the BOOT partition
+if [ ! -d ../root-overlay/boot ]; then
+	mkdir ../root-overlay/boot || exit -1
+fi
+
 # buildroot
 cp -R ../../buildroot/output/target/* .
 cp -R ../root-overlay/* .
@@ -99,6 +104,6 @@ umount tmp
 rm -rf tmp
 
 # Create distributable image
-dd if=$DEVICE of=$RELEASE.img bs=1M count=$STICK_SIZE_MB
-gzip -k $RELEASE.img
+#dd if=$DEVICE of=$RELEASE.img bs=1M count=$STICK_SIZE_MB
+#gzip -k $RELEASE.img
 
