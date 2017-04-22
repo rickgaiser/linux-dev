@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Linux kernel version: 2.6.35.14
-# Thu Oct  6 20:39:51 2016
+# Sat Feb 25 20:48:37 2017
 #
 CONFIG_MIPS=y
 
@@ -1474,7 +1474,6 @@ CONFIG_PS2_MC=m
 CONFIG_PS2_SD=m
 CONFIG_PS2_PAD_JS=m
 CONFIG_PS2_AUDIO=m
-CONFIG_PS2_STUFF=y
 
 #
 # Sony Playstation 2 Memory Card
