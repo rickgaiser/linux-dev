@@ -3,6 +3,8 @@ firmware/
 kernelloader/
 linux/
 toolchain/
+usb-stick/boot-overlay/BOOT/buildrootconfig.txt
+usb-stick/boot-overlay/BOOT/kernelconfig-*.txt
 usb-stick/boot-overlay/BOOT/*.ELF
 usb-stick/boot-overlay/BOOT/*.gz
 usb-stick/root-overlay/lib/
