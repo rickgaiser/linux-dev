@@ -49,6 +49,8 @@ cd "${TOOLCHAIN_DIR}"
 #		rm -rf "${BINUTILS_DIR}"
 		if [ ! -d "${BINUTILS_DIR}" ]; then
 			mkdir "${BINUTILS_DIR}" || exit -1
+		fi
+		if [ ! -f "${BINUTILS_DIR}/binutils/readelf" ]; then
 			cd "${BINUTILS_DIR}"
 			../../${BINUTILS_DIR}/configure --program-prefix="${TOOLCHAIN_PROGRAMPREFIX}" --target=${TOOLCHAIN_TARGET} --enable-targets=${TOOLCHAIN_TARGET} --enable-shared --enable-plugins || exit -1
 			make -j 5 || exit -1
@@ -60,6 +62,8 @@ cd "${TOOLCHAIN_DIR}"
 #		rm -rf "${GCC_DIR}"
 		if [ ! -d "${GCC_DIR}" ]; then
 			mkdir "${GCC_DIR}" || exit -1
+		fi
+		if [ ! -f "${GCC_DIR}/gcc/cc1" ]; then
 			cd "${GCC_DIR}"
 			../../${GCC_DIR}/configure --program-prefix="${TOOLCHAIN_PROGRAMPREFIX}" --target=${TOOLCHAIN_TARGET} --enable-languages=c --disable-nls --disable-shared --disable-libssp --disable-libmudflap --disable-threads --disable-libgomp --disable-libquadmath --disable-target-libiberty --disable-target-zlib --without-ppl --without-cloog --with-headers=no --disable-libada --disable-libatomic || exit -1
 			make -j 5 || exit -1
