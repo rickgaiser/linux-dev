@@ -17,6 +17,7 @@ cd ${BUILDROOT_DIR}
 	make || exit -1
 
 	# Install
+	mkdir -p ../${USB_BOOT_DIR}/BOOT
 	cp .config ../${USB_BOOT_DIR}/BOOT/buildrootconfig.txt || exit -1
 #	cp output/images/rootfs.cpio.gz /var/www/html/initrd.gz || exit -1
 cd ..
