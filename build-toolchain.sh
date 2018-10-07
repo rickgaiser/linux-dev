@@ -2,6 +2,25 @@
 
 source "config/config.cfg"
 
+# binutils 2.24 requires gcc 4
+if [ -z "${CXX}" ]; then
+    CXX="g++"
+fi
+CXXMAJORVERSION=$(${CXX} -dumpversion | cut -d "." -f 1)
+if [ "${CXXMAJORVERSION}" -ne 4 ]; then
+    echo "g++ 4 is required. If it is installed set CXX variable accordingly."
+    exit -1
+fi
+
+if [ -z "${CC}" ]; then
+    CC="gcc"
+fi
+CCMAJORVERSION=$(${CC} -dumpversion | cut -d "." -f 1)
+if [ "${CCMAJORVERSION}" -ne 4 ]; then
+    echo "gcc 4 is required. If it is installed set CC variable accordingly."
+    exit -1
+fi
+
 #
 # Make binutils and gcc for compiling linux
 #

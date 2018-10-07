@@ -12,6 +12,7 @@ This environment will download and build:
 Required before installation:
 - working ps2dev / ps2sdk environment
 - git
+- gcc/g++ 4
 
 To get started type:
 - ./build-all.sh
